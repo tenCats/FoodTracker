@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Pdr-vL-ek9">
-                                <rect key="frame" x="20" y="84" width="374" height="100.33333333333331"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Pdr-vL-ek9">
+                                <rect key="frame" x="20" y="84" width="374" height="550.33333333333337"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="食物名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8e-5o-NEU">
                                         <rect key="frame" x="0.0" y="0.0" width="69.333333333333329" height="20.333333333333332"/>
@@ -40,6 +40,22 @@
                                             <action selector="setDefaultTextLabel:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sDx-O1-hEt"/>
                                         </connections>
                                     </button>
+                                    <imageView clearsContextBeforeDrawing="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="lfi-o5-o1y">
+                                        <rect key="frame" x="0.0" y="110.33333333333337" width="320" height="320"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" image="YES" allowsDirectInteraction="YES"/>
+                                        </accessibility>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="lfi-o5-o1y" secondAttribute="height" multiplier="1:1" id="Mcf-Ri-Kof"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="MN4-FE-juL" appends="YES" id="IBa-dA-rne"/>
+                                        </connections>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qht-tO-0P1" customClass="RatingControl" customModule="FoodTracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="440.33333333333337" width="200" height="110"/>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="1js-on-veq" firstAttribute="leading" secondItem="Pdr-vL-ek9" secondAttribute="leading" id="hJf-se-DDm"/>
@@ -48,6 +64,10 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" image="YES"/>
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Pdr-vL-ek9" secondAttribute="trailing" constant="20" id="Ebw-Yi-0i1"/>
                             <constraint firstItem="Pdr-vL-ek9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="bXh-T9-FE3"/>
@@ -58,11 +78,20 @@
                     <connections>
                         <outlet property="mealNameLabel" destination="L8e-5o-NEU" id="klq-Kw-u8K"/>
                         <outlet property="nameTexedField" destination="1js-on-veq" id="zWd-w2-5RB"/>
+                        <outlet property="photoImageView" destination="lfi-o5-o1y" id="WcW-L1-Dol"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="MN4-FE-juL">
+                    <connections>
+                        <action selector="selectImageFromLibrary:" destination="BYZ-38-t0r" id="gRk-Lf-4MR"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="124.55357142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultPhoto" width="320" height="320"/>
+    </resources>
 </document>
